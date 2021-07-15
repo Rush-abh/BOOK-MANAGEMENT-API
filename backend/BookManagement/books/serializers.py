@@ -8,7 +8,7 @@ from books.models import Book
 
 
 # Default serializer with all fields of model
-class AuthorSerializer(serializers.ModelSerializer):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = "__all__"
