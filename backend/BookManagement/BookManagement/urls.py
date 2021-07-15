@@ -19,8 +19,12 @@ from django.urls import path, include
 # wiring other apps to main project
 # Using URLconf method for listing routes
 urlpatterns = [
-
+    # URL pattern to reach admin
     path('admin/', admin.site.urls),
+
+    # URL pattern to reach authors app
     path('authors/', include('authors.urls')),
+
+    # URL pattern to reach books app
     path('books/', include('books.urls')),
 ]
