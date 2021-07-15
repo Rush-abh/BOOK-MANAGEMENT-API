@@ -9,5 +9,5 @@ from authors import views
 
 urlpatterns = [
     path('', views.authors_list),
-    path('author/<int:author_id>', views.author_detail_view),
+    path('<int:pk>', views.author_detail_view),
 ]
