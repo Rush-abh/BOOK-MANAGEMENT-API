@@ -8,6 +8,12 @@ from authors import views
 
 
 urlpatterns = [
+    # display list
     path('', views.authors_list),
-    path('<int:pk>', views.author_detail_view),
+
+    # update existing record
+    path('author/<int:pk>', views.author_detail_view),
+
+    # create new record
+    path('author/', views.create_author),
 ]
