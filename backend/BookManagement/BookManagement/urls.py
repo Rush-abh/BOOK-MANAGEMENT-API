@@ -19,7 +19,8 @@ from django.urls import path, include
 # wiring other apps to main project
 # Using URLconf method for listing routes
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('authors/', include('authors.urls')),
-    #path('books/', include('books.urls')),
+    path('books/', include('books.urls')),
 ]
