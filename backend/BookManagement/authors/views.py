@@ -12,9 +12,9 @@ from rest_framework.parsers import JSONParser
 
 
 # function based view implementation
-# Handles GET and POST request
+# Handles GET request, responds with record list
 @csrf_exempt
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def authors_list(request):
 
     if request.method == 'GET':
@@ -22,16 +22,9 @@ def authors_list(request):
         serializer = AuthorSerializer(authors, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = AuthorSerializer(data=data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
+# Handles GET,PUT and DELETE request, responds with updating existing record
+@csrf_exempt
 @api_view(['GET', 'PUT', 'DELETE'])
 def author_detail_view(request, pk):
 
@@ -54,3 +47,18 @@ def author_detail_view(request, pk):
     elif request.method == 'DELETE':
         author.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# Handles POST request, responds with creating new record
+@csrf_exempt
+@api_view(['POST'])
+def create_author(request):
+
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = AuthorSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
