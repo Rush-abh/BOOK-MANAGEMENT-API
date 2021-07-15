@@ -1,0 +1,6 @@
+{
+  "python.analysis.extraPaths": [
+    "./backend/bookmanagement"
+  ],
+  "python.pythonPath": "C:\\Users\\himla\\anaconda3\\envs\\IXenvironment\\python.exe"
+}
